@@ -27,7 +27,7 @@ import (
 	broker  "istio.io/api/broker/v1/config"
 	mesh    "istio.io/api/mesh/v1alpha1"
 	mixer   "istio.io/api/mixer/v1"
-	routing "istio.io/api/routing/v1alpha1"
+	routing "istio.io/api/routing/v1alpha2"
 
 
 	"../../pkg/schemagen"
@@ -36,43 +36,45 @@ import (
 )
 
 type Schema struct {
-	CatalogPlan             broker.CatalogPlan
-	CatalogEntry            broker.CatalogEntry
-	Deployment              broker.Deployment
-	ServiceClass            broker.ServiceClass
-	ServicePlan             broker.ServicePlan
-	MeshConfig              mesh.MeshConfig
-	ProxyConfig             mesh.ProxyConfig
-	Attributes              mixer.Attributes
-	AttributeValue          mixer.Attributes_AttributeValue
-	CheckRequest            mixer.CheckRequest
-	QuotaParams             mixer.CheckRequest_QuotaParams
-	CheckResponse           mixer.CheckResponse
-	QuotaResult             mixer.CheckResponse_QuotaResult
-	CompressedAttributes    mixer.CompressedAttributes
-	ReferencedAttributes    mixer.ReferencedAttributes
-	ReportRequest           mixer.ReportRequest
-	ReportResponse          mixer.ReportResponse
-	StringMap               mixer.StringMap
-	CircuitBreaker          routing.CircuitBreaker
-	CorsPolicy              routing.CorsPolicy
-	DestinationPolicy       routing.DestinationPolicy
-	DestinationWeight       routing.DestinationWeight
-	EgressRule              routing.EgressRule
-	HTTPFaultInjection      routing.HTTPFaultInjection
-	HTTPRedirect            routing.HTTPRedirect
-	HTTPRetry               routing.HTTPRetry
-	HTTPRewrite             routing.HTTPRewrite
-	HTTPTimeout             routing.HTTPTimeout
-	IngressRule             routing.IngressRule
-	IstioService            routing.IstioService
-	L4FaultInjection        routing.L4FaultInjection
-	L4MatchAttributes       routing.L4MatchAttributes
-	LoadBalancing           routing.LoadBalancing
-	MatchCondition          routing.MatchCondition
-	MatchRequest            routing.MatchRequest
-	RouteRule               routing.RouteRule
-	StringMatch             routing.StringMatch
+	CatalogPlan            broker.CatalogPlan
+	CatalogEntry           broker.CatalogEntry
+	Deployment             broker.Deployment
+	ServiceClass           broker.ServiceClass
+	ServicePlan            broker.ServicePlan
+	MeshConfig             mesh.MeshConfig
+	ProxyConfig            mesh.ProxyConfig
+	Attributes             mixer.Attributes
+	AttributeValue         mixer.Attributes_AttributeValue
+	CheckRequest           mixer.CheckRequest
+	QuotaParams            mixer.CheckRequest_QuotaParams
+	CheckResponse          mixer.CheckResponse
+	QuotaResult            mixer.CheckResponse_QuotaResult
+	CompressedAttributes   mixer.CompressedAttributes
+	ReferencedAttributes   mixer.ReferencedAttributes
+	ReportRequest          mixer.ReportRequest
+	ReportResponse         mixer.ReportResponse
+	StringMap              mixer.StringMap
+	ConnectionPoolSettings routing.ConnectionPoolSettings
+	CorsPolicy             routing.CorsPolicy
+	Destination            routing.Destination
+	DestinationRule        routing.DestinationRule
+	DestinationWeight      routing.DestinationWeight
+	Gateway                routing.Gateway
+	HTTPFaultInjection     routing.HTTPFaultInjection
+	HTTPMatchRequest       routing.HTTPMatchRequest
+	HTTPRedirect           routing.HTTPRedirect
+	HTTPRetry              routing.HTTPRetry
+	HTTPRewrite            routing.HTTPRewrite
+	HTTPRoute              routing.HTTPRoute
+	L4MatchAttributes      routing.L4MatchAttributes
+	OutlierDetection       routing.OutlierDetection
+	PortSelector           routing.PortSelector
+	RouteRule              routing.RouteRule
+	Server                 routing.Server
+	StringMatch            routing.StringMatch
+	Subset                 routing.Subset
+	TCPRoute               routing.TCPRoute
+	TrafficPolicy          routing.TrafficPolicy
 }
 
 func main() {
@@ -80,10 +82,12 @@ func main() {
 		{"istio.io/api/broker/v1/config", "me.snowdrop.istio.api.model.v1.broker", "istio_broker_"},
 		{"istio.io/api/mesh/v1alpha1", "me.snowdrop.istio.api.model.v1.mesh", "istio_mesh_"},
 		{"istio.io/api/mixer/v1", "me.snowdrop.istio.api.model.v1.mixer", "istio_mixer_"},
-		{"istio.io/api/routing/v1alpha1", "me.snowdrop.istio.api.model.v1.routing", "istio_routing_"},
+		{"istio.io/api/routing/v1alpha2", "me.snowdrop.istio.api.model.v1.routing", "istio_routing_"},
 		{"github.com/golang/protobuf/ptypes/duration", "me.snowdrop.istio.api.model", "protobuf_duration_"},
 		{"github.com/gogo/protobuf/types", "me.snowdrop.istio.api.model", "protobuf_types_"},
 		{"github.com/golang/protobuf/ptypes/any", "me.snowdrop.istio.api.model", "protobuf_any_"},
+		{"github.com/gogo/protobuf/types", "me.snowdrop.istio.api.model", "protobuf_any_"},
+		{"istio.io/gogo-genproto/googleapis/google/rpc", "me.snowdrop.istio.api.model", "protobuf_status_"},
 		{"istio.io/gogo-genproto/googleapis/google/rpc", "me.snowdrop.istio.api.model", "google_rpc_"},
 	}
 
