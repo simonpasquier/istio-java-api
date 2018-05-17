@@ -20,17 +20,18 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"os"
 	"reflect"
 	"strings"
 	"time"
+
 	mesh "istio.io/api/mesh/v1alpha1"
 	mixer "istio.io/api/mixer/v1"
 	routing "istio.io/api/routing/v1alpha1"
 	prometheus "istio.io/istio/mixer/adapter/prometheus/config"
 	"istio.io/istio/mixer/template/metric"
 
-	"../../pkg/schemagen"
-	"os"
+	"github.com/snowdrop/istio-java-api/pkg/schemagen"
 )
 
 type Schema struct {
